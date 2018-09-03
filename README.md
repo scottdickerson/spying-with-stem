@@ -1,4 +1,4 @@
-#Spying with Stem
+# Spying with Stem
 
 ## Project Overview
 
