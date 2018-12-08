@@ -1,0 +1,4 @@
+export const ANIMATION_ACTIONS = {
+  PLAY_SOUND: "PLAY_SOUND",
+  PAUSE: "PAUSE"
+};
