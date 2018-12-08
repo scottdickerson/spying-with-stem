@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
+import ButtonClose from "./img/Button-Close-X.png";
+
 import styles from "./SiteDetails.module.css";
 
 class SiteDetails extends Component {
@@ -29,7 +31,7 @@ class SiteDetails extends Component {
             {rightPane}
           </div>
           <img
-            src="img/site-details/Button-Close-X.png"
+            src={ButtonClose}
             alt="Close"
             className={styles.closeButton}
             onClick={() => onCloseSite()}

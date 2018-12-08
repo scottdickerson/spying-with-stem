@@ -9,7 +9,7 @@ const defaultProps = {
   isPlaying: false
 };
 const AudioPlayer = ({ isPlaying, soundFile }) => (
-  <audio autoPlay={isPlaying} src={`/sounds/${soundFile}`} />
+  <audio autoPlay={isPlaying} src={soundFile} />
 );
 
 AudioPlayer.propTypes = propTypes;

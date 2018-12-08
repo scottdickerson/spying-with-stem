@@ -1,14 +1,16 @@
 import AudioPlayer from "../AudioPlayer";
 
+import SampleAudio from "../sounds/SampleAudio.mp3";
+
 export default [
   {
     component: AudioPlayer,
     name: "not playing",
-    props: { soundFile: "./SampleAudio.mp3" }
+    props: { soundFile: SampleAudio }
   },
   {
     component: AudioPlayer,
     name: "playing",
-    props: { soundFile: "SampleAudio.mp3", isPlaying: true }
+    props: { soundFile: SampleAudio, isPlaying: true }
   }
 ];

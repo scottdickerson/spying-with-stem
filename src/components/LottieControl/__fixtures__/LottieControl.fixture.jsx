@@ -1,5 +1,5 @@
 import LottieControl from "../LottieControl";
-import * as animationData from "../testanimations/morse-code.json";
+import animationData from "../testanimations/morse-code.json";
 import { ANIMATION_ACTIONS } from "../../../constants/constants";
 
 export default [
