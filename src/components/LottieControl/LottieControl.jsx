@@ -21,11 +21,13 @@ export default class LottieControl extends React.Component {
     ),
     imageMap: PropTypes.arrayOf(
       PropTypes.shape({ name: PropTypes.string, path: PropTypes.string })
-    )
+    ),
+    isLooping: PropTypes.bool
   };
 
   static defaultProps = {
-    imageMap: []
+    imageMap: [],
+    isLooping: false
   };
 
   componentDidMount() {
@@ -75,10 +77,10 @@ export default class LottieControl extends React.Component {
   };
 
   render() {
-    const { animationData, imageMap } = this.props;
+    const { animationData, imageMap, isLooping } = this.props;
 
     const defaultOptions = {
-      loop: false,
+      loop: isLooping,
       autoplay: true,
       animationData: updateImagePaths(animationData, imageMap),
       rendererSettings: {
