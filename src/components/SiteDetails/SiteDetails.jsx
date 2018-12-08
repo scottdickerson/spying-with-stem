@@ -1,42 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
-import DetailCarousel from "../DetailCarousel/DetailCarousel";
-import Details from "../Details/Details";
-import SiteSchema from "../../schemas/site";
-import "./SiteDetails.css";
+import styles from "./SiteDetails.module.css";
 
 class SiteDetails extends Component {
   static propTypes = {
-    selectedSite: SiteSchema.isRequired,
+    rightPane: PropTypes.node.isRequired,
+    leftPane: PropTypes.node.isRequired,
     onCloseSite: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      imageIndex: 0
-      // moreDetails: false
-    };
-  }
-  onImageChanged = image => {
-    this.setState({
-      imageIndex: image
-    });
-  };
-
-  /*
-  toggleMoreDetails = () => {
-    console.log("toggle More Details");
-    this.setState({
-      moreDetails: false
-    });
-  }; */
-
   render() {
-    const { selectedSite, onCloseSite, isOpen } = this.props;
-    const { imageIndex } = this.state;
+    const { onCloseSite, isOpen, rightPane, leftPane } = this.props;
 
     return (
       <CSSTransition
@@ -44,26 +20,19 @@ class SiteDetails extends Component {
         unmountOnExit
         in={isOpen}
         timeout={1000}
-        classNames="bottom"
+        classNames={styles.bottom}
       >
-        <div className="siteDetails">
-          <div className="siteDetailContent">
-            <div className="siteDetailBackground" />
-            <DetailCarousel
-              detailImages={selectedSite.detailImages}
-              onImageChanged={this.onImageChanged}
-            />
-            <Details
-              {...selectedSite}
-              {...selectedSite.detailImages[imageIndex]}
-              onMoreDetails={this.toggleMoreDetails}
-            />
+        <div className={styles.siteDetails}>
+          <div className={styles.siteDetailContent}>
+            <div className={styles.siteDetailBackground} />
+            {leftPane}
+            {rightPane}
           </div>
           <img
             src="img/site-details/Button-Close-X.png"
             alt="Close"
-            className="closeButton"
-            onClick={() => onCloseSite(selectedSite.id)}
+            className={styles.closeButton}
+            onClick={() => onCloseSite()}
           />
         </div>
       </CSSTransition>

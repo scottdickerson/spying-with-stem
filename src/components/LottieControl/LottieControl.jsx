@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Lottie from "react-lottie";
 import { ANIMATION_ACTIONS } from "../../constants/constants";
+import { updateImagePaths } from "./lottieUtils";
 
 const findAction = (actions, frame) => {
   return actions.find(action => action.frame === frame);
@@ -17,7 +18,14 @@ export default class LottieControl extends React.Component {
         action: PropTypes.oneOf(Object.values(ANIMATION_ACTIONS)),
         payload: PropTypes.string // extra information about the action
       })
+    ),
+    imageMap: PropTypes.arrayOf(
+      PropTypes.shape({ name: PropTypes.string, path: PropTypes.string })
     )
+  };
+
+  static defaultProps = {
+    imageMap: []
   };
 
   updateFrame = frame => {
@@ -41,12 +49,12 @@ export default class LottieControl extends React.Component {
   };
 
   render() {
-    const { animationData } = this.props;
+    const { animationData, imageMap } = this.props;
 
     const defaultOptions = {
       loop: false,
       autoplay: true,
-      animationData: animationData,
+      animationData: updateImagePaths(animationData, imageMap),
       rendererSettings: {
         preserveAspectRatio: "xMidYMid slice"
       }
