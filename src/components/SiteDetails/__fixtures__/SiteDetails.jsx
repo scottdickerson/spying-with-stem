@@ -11,6 +11,7 @@ export default {
         title="Title"
         subTitle="Sub Title"
         details="Lots of details go here"
+        animation="Hi There Animation!"
       />
     ),
     isOpen: true,

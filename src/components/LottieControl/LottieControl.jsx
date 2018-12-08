@@ -9,7 +9,7 @@ const findAction = (actions, frame) => {
 };
 export default class LottieControl extends React.Component {
   state = { isStopped: false, isPaused: false };
-  currentFrame = 0;
+  previousFrame = 0;
   static propTypes = {
     animationData: PropTypes.object.isRequired,
     actions: PropTypes.arrayOf(
@@ -47,16 +47,18 @@ export default class LottieControl extends React.Component {
     }
   };
 
+  /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
     const { actions } = this.props;
-    this.currentFrame = this.currentFrame + 1;
     console.log(
-      `frame callback ${JSON.stringify(frame)} for frame number ${
-        this.currentFrame
+      `frame callback ${JSON.stringify(frame)} and previousFrame ${
+        this.previousFrame
       }`
     );
-    if (actions) {
-      const action = findAction(actions, this.currentFrame);
+    const currentFrame = Math.floor(frame.currentTime);
+    if (actions && this.previousFrame !== currentFrame) {
+      this.previousFrame = currentFrame;
+      const action = findAction(actions, currentFrame);
       if (action) {
         // found an action for this frame
         switch (action.action) {
@@ -91,6 +93,7 @@ export default class LottieControl extends React.Component {
           isStopped={this.state.isStopped}
           isPaused={this.state.isPaused}
           isClickToPauseDisabled={true}
+          isSubframe={false}
           eventListeners={[
             {
               eventName: "enterFrame",
