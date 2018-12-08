@@ -28,6 +28,25 @@ export default class LottieControl extends React.Component {
     imageMap: []
   };
 
+  componentDidMount() {
+    this.touchListener = document.body.addEventListener(
+      "touchstart",
+      this.resume
+    );
+    this.clickListener = document.body.addEventListener("click", this.resume);
+  }
+
+  componentWillUmount() {
+    document.body.removeEventListener(this.touchListener);
+    document.body.removeEventListener(this.clickListener);
+  }
+
+  resume = () => {
+    if (this.state.isPaused) {
+      this.setState({ isPaused: false });
+    }
+  };
+
   updateFrame = frame => {
     const { actions } = this.props;
     this.currentFrame = this.currentFrame + 1;
@@ -66,6 +85,7 @@ export default class LottieControl extends React.Component {
           options={defaultOptions}
           isStopped={this.state.isStopped}
           isPaused={this.state.isPaused}
+          isClickToPauseDisabled={true}
           eventListeners={[
             {
               eventName: "enterFrame",

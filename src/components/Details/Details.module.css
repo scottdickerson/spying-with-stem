@@ -1,18 +1,18 @@
 .details {
-  width: 100%;
-  padding-left: 0rem;
-  padding-right: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   height: 95%;
+  padding-top: 1rem;
   overflow-x: hidden;
+  color: #d9d0ad;
+  font-family: LiberationSans;
 }
 
 .title {
   width: 85%;
   text-transform: uppercase;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem;
   font-weight: 500;
   color: #f58f00;
   text-transform: uppercase;
@@ -29,16 +29,13 @@
 
 .subTitle {
   font-size: 24px;
-  font-family: LiberationSans;
   font-weight: 600;
   margin: 2rem 0rem 1.5rem;
-  padding: 0rem 4rem;
+  padding: 0rem 3rem;
 }
 
-.details {
-  color: #d9d0ad;
-  font-family: LiberationSans;
-  padding: 0rem 4rem;
+.blurb {
+  padding: 0rem 3rem;
   max-width: 600px;
   overflow-y: auto;
 }

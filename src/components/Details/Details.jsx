@@ -18,7 +18,7 @@ const Details = props => {
       <div className={styles.title}>{title}</div>
       <img className={styles.separator} src={Divider} alt="" />
       <div className={styles.subTitle}>{subTitle}</div>
-      <div className={styles.details}>{ReactHTMLParser(details)}</div>
+      <div className={styles.blurb}>{ReactHTMLParser(details)}</div>
     </div>
   );
 };

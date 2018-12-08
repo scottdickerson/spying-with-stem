@@ -27,8 +27,8 @@ class SiteDetails extends Component {
         <div className={styles.siteDetails}>
           <div className={styles.siteDetailContent}>
             <div className={styles.siteDetailBackground} />
-            {leftPane}
-            {rightPane}
+            <div className={styles.leftPane}>{leftPane}</div>
+            <div className={styles.rightPane}>{rightPane}</div>
           </div>
           <img
             src={ButtonClose}
