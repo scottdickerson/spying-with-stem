@@ -39,3 +39,7 @@
   max-width: 600px;
   overflow-y: auto;
 }
+
+.animation {
+  padding-left: 3rem;
+}

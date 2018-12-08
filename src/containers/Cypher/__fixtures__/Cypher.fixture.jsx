@@ -1,7 +1,7 @@
-import CypherLeft from "../CypherLeft";
+import Cypher from "../Cypher";
 
 export default {
-  component: CypherLeft,
+  component: Cypher,
   props: {
     isOpen: true,
     onCloseSite: () => console.log("close the site!")

@@ -7,11 +7,12 @@ import Divider from "./img/Lines-TwoYellowDividers.png";
 const propTypes = {
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired
+  details: PropTypes.string.isRequired,
+  animation: PropTypes.node.isRequired
 };
 
 const Details = props => {
-  const { title, subTitle, details } = props;
+  const { title, subTitle, details, animation } = props;
 
   return (
     <div className={styles.details}>
@@ -19,6 +20,7 @@ const Details = props => {
       <img className={styles.separator} src={Divider} alt="" />
       <div className={styles.subTitle}>{subTitle}</div>
       <div className={styles.blurb}>{ReactHTMLParser(details)}</div>
+      <div className={styles.animation}>{animation}</div>
     </div>
   );
 };

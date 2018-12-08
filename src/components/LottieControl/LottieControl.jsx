@@ -50,6 +50,11 @@ export default class LottieControl extends React.Component {
   updateFrame = frame => {
     const { actions } = this.props;
     this.currentFrame = this.currentFrame + 1;
+    console.log(
+      `frame callback ${JSON.stringify(frame)} for frame number ${
+        this.currentFrame
+      }`
+    );
     if (actions) {
       const action = findAction(actions, this.currentFrame);
       if (action) {
