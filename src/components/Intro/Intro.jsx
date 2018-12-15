@@ -6,8 +6,7 @@ import styles from "./Intro.module.css";
 
 const propTypes = {
   intro: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired,
-  callToAction: PropTypes.string.isRequired
+  details: PropTypes.string.isRequired
 };
 
 const Intro = props => {
@@ -18,7 +17,6 @@ const Intro = props => {
       <div className={styles.introDetails}>
         <div className={styles.introDetailsText}>
           {ReactHTMLParser(details)}
-          {callToAction}
         </div>
       </div>
     </div>

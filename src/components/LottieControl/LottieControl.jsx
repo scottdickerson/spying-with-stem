@@ -52,11 +52,7 @@ export default class LottieControl extends React.Component {
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
     const { actions } = this.props;
-    console.log(
-      `frame callback ${JSON.stringify(frame)} and previousFrame ${
-        this.previousFrame
-      }`
-    );
+
     const currentFrame = Math.floor(frame.currentTime);
     if (actions && this.previousFrame !== currentFrame) {
       this.previousFrame = currentFrame;
