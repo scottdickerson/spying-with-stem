@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router";
 import { ROUTES } from "./constants/constants";
-import "./App.css";
 import SpyingPullScreen from "./containers/SpyingPullScreen/SpyingPullScreen";
 import SpyingMainScreen from "./containers/SpyingMainScreen/SpyingMainScreen";
 
@@ -26,7 +25,7 @@ class App extends Component {
   };
   render() {
     return (
-      <div className="App">
+      <div>
         <Switch>
           <Route exact path={ROUTES.PULLSCREEN} component={SpyingPullScreen} />
           <Route exact path={ROUTES.MAINSCREEN} component={SpyingMainScreen} />
