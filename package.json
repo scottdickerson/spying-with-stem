@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "babel-eslint": "9.x",
+    "classnames": "^2.2.6",
     "eslint": "5.6.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-plugin-flowtype": "2.x",

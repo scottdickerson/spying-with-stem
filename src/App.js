@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, withRouter } from "react-router";
 import { ROUTES } from "./constants/constants";
 import "./App.css";
 import SpyingPullScreen from "./containers/SpyingPullScreen/SpyingPullScreen";
-import MainScreen from "./components/MainScreen/MainScreen";
+import SpyingMainScreen from "./containers/SpyingMainScreen/SpyingMainScreen";
 
 class App extends Component {
   componentDidMount() {
@@ -16,22 +16,24 @@ class App extends Component {
   }
   showSelection = () => {
     const { history } = this.props;
-    history.push(ROUTES.SELECT);
+    history.push(ROUTES.MAINSCREEN);
     this.resetTimer = setTimeout(this.reset, 3000);
   };
   reset = () => {
+    const { history } = this.props;
+    history.push(ROUTES.PULLSCREEN);
     window.location.reload(); // reload the whole page
   };
   render() {
     return (
       <div className="App">
         <Switch>
-          <Route exact path={ROUTES.MAIN} component={SpyingPullScreen} />
-          <Route exact path={ROUTES.SELECT} commponent={MainScreen} />
+          <Route exact path={ROUTES.PULLSCREEN} component={SpyingPullScreen} />
+          <Route exact path={ROUTES.MAINSCREEN} component={SpyingMainScreen} />
         </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

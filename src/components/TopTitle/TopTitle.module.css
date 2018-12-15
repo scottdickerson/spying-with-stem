@@ -1,0 +1,21 @@
+.topTitleText {
+  margin-top: -3.5rem;
+  color: #f58f00;
+  font-family: GhostLight;
+}
+.topTitleText.titleText {
+  font-size: 65pt;
+  padding-top: 2rem;
+}
+
+.topTitleImage {
+  position: relative;
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.topTitleImage img {
+  width: 90%;
+}

@@ -4,6 +4,6 @@ export const ANIMATION_ACTIONS = {
 };
 
 export const ROUTES = {
-  MAIN: "/",
-  SELECT: "/select"
+  PULLSCREEN: "/",
+  MAINSCREEN: "/main"
 };
