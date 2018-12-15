@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const Intro = props => {
-  const { intro, details, callToAction } = props;
+  const { intro, details } = props;
   return (
     <div className={styles.intro}>
       <div className={styles.introText}>{ReactHTMLParser(intro)}</div>

@@ -14,13 +14,13 @@ const StorySelector = ({ stories, onSelect }) => {
       <div className={styles.background} />
       <div className={styles.storySelector}>
         {stories.map((story, index) => (
-          <div className={styles.story} onClick={() => onSelect(index, story)}>
-            <img
-              key={`image-${story.name}`}
-              alt={story.name}
-              className={styles.image}
-            />
-            <div tabIndex="0" key={story.name} className={styles.name}>
+          <div
+            key={story.name}
+            className={styles.story}
+            onClick={() => onSelect(index, story)}
+          >
+            <img alt={story.name} className={styles.image} />
+            <div tabIndex="0" className={styles.name}>
               {story.name}
             </div>
           </div>

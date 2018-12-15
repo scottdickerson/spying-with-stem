@@ -1,12 +1,16 @@
 import React from "react";
 import LottieControl from "../../components/LottieControl/LottieControl";
 import animationData from "./animation/Pullscreen_Main.json";
-import styles from "./SpyingPullScreen.module.css";
+import PullScreen from "../../components/PullScreen/PullScreen";
 
-const SpyingPullScreen = () => (
-  <div className={styles.pullScreen}>
-    <LottieControl animationData={animationData} isLooping={true} />
-  </div>
-);
+class SpyingPullScreen extends React.Component {
+  render() {
+    return (
+      <PullScreen>
+        <LottieControl animationData={animationData} isLooping={true} />
+      </PullScreen>
+    );
+  }
+}
 
 export default SpyingPullScreen;

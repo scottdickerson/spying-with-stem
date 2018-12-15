@@ -42,29 +42,30 @@
   opacity: 0.6;
 }
 
-.bottom-enter {
+:global(.bottom-enter) {
   transform: translateY(100%);
 }
-.bottom-enter-active {
+:global(.bottom-enter-active) {
   transform: translateY(0%);
   transition: transform 500ms ease-in-out;
 }
-.bottom-enter-done {
+:global(.bottom-enter-done) {
   transform: translateY(0%);
 }
-.bottom-exit {
+
+:global(.bottom-exit) {
   transform: translateY(0%);
 }
-.bottom-exit .siteDetailBackground {
+:global(.bottom-exit) .siteDetailBackground {
   background-image: url("../../img/Background.png");
   opacity: 1;
   z-index: -1;
 }
-.bottom-exit-active {
+:global(.bottom-exit-active) {
   transform: translateY(100%);
   transition: transform 500ms ease-in-out;
 }
-.bottom-exit-done {
+:global(.bottom-exit-done) {
   transform: translateY(100%);
 }
 .closeButton {
