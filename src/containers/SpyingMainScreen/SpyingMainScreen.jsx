@@ -14,6 +14,9 @@ class SpyingMainScreen extends React.Component {
       case 0:
         history.push(ROUTES.CYPHER);
         break;
+      case 1:
+        history.push(ROUTES.TELEGRAM);
+        break;
       default:
         return;
     }

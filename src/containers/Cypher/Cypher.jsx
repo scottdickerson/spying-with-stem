@@ -7,12 +7,14 @@ import CypherRight from "./CypherRight";
 import CypherMain from "./CypherMain";
 
 const propTypes = {
-  isOpen: PropTypes.bool
+  isOpen: PropTypes.bool,
+  onCloseSite: PropTypes.func.isRequired
 };
 
 const Cypher = ({ isOpen, onCloseSite }) => (
   <SiteDetails
     isOpen={isOpen}
+    onCloseSite={onCloseSite}
     leftPane={<CypherMain />}
     rightPane={
       <Details

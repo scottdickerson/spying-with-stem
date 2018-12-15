@@ -6,5 +6,6 @@ export const ANIMATION_ACTIONS = {
 export const ROUTES = {
   PULLSCREEN: "/",
   MAINSCREEN: "/main",
-  CYPHER: "/cypher"
+  CYPHER: "/cypher",
+  TELEGRAM: "/telegram"
 };

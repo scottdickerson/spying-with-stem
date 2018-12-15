@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import { CSSTransition } from "react-transition-group";
 import ButtonClose from "./img/Button-Close-X.png";
@@ -10,16 +9,12 @@ class SiteDetails extends Component {
   static propTypes = {
     rightPane: PropTypes.node.isRequired,
     leftPane: PropTypes.node.isRequired,
-    isOpen: PropTypes.bool.isRequired
-  };
-
-  handleCloseSite = () => {
-    const { history } = this.props;
-    history.goBack();
+    isOpen: PropTypes.bool.isRequired,
+    onCloseSite: PropTypes.func.isRequired
   };
 
   render() {
-    const { isOpen, rightPane, leftPane } = this.props;
+    const { isOpen, rightPane, leftPane, onCloseSite } = this.props;
 
     return (
       <CSSTransition
@@ -39,7 +34,7 @@ class SiteDetails extends Component {
             src={ButtonClose}
             alt="Close"
             className={styles.closeButton}
-            onClick={this.handleCloseSite}
+            onClick={onCloseSite}
           />
         </div>
       </CSSTransition>
@@ -47,4 +42,4 @@ class SiteDetails extends Component {
   }
 }
 
-export default withRouter(SiteDetails);
+export default SiteDetails;
