@@ -17,12 +17,11 @@ const StorySelector = ({ stories, onSelect }) => {
           <div
             key={story.name}
             className={styles.story}
+            tabIndex="0"
             onClick={() => onSelect(index, story)}
           >
             <img alt={story.name} className={styles.image} />
-            <div tabIndex="0" className={styles.name}>
-              {story.name}
-            </div>
+            <div className={styles.name}>{story.name}</div>
           </div>
         ))}
       </div>

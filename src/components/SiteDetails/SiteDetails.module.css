@@ -47,7 +47,7 @@
 }
 :global(.bottom-enter-active) {
   transform: translateY(0%);
-  transition: transform 500ms ease-in-out;
+  transition: transform 250ms ease-in-out;
 }
 :global(.bottom-enter-done) {
   transform: translateY(0%);
@@ -63,7 +63,7 @@
 }
 :global(.bottom-exit-active) {
   transform: translateY(100%);
-  transition: transform 500ms ease-in-out;
+  transition: transform 250ms ease-in-out;
 }
 :global(.bottom-exit-done) {
   transform: translateY(100%);
