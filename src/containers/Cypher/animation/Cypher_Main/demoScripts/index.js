@@ -6,6 +6,8 @@ var animation = bodymovin.loadAnimation({
   path: 'Cypher_Main.json'
 })
 
-//animation.play();
+animation.play();
 
-animation.goToAndPlay( 0 , true );
+//animation.goToAndStop( 236 , true );
+//animation.playSegments([236, 345] , false );
+//animation.stop();
