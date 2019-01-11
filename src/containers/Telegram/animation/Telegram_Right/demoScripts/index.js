@@ -6,7 +6,7 @@ var animation = bodymovin.loadAnimation({
   path: 'Telegram_Right.json'
 })
 
-animation.goToAndPlay(0, true);
+animation.play();
 
 //animation.goToAndStop( 236 , true );
 //animation.playSegments([236, 345] , false );
