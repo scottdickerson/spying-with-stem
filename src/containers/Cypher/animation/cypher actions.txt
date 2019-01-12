@@ -1,0 +1,40 @@
+// frame , action
+
+0 , sound low_whoosh_short
+35, sound airy_stick
+52, sound paper_write_short
+107, sound paper_write_long
+140, sound paper_write_long
+183, sound envelope
+214, sound paper_write_long
+269, sound airy_stick
+300, sound pistol
+327, sound airy_stick
+335, sound low_whoosh_short
+355, sound paper_write_short
+373, sound button
+373, sound swoosh_slow
+410, sound button
+410, sound swoosh_slow
+458, sound button
+458, sound swoosh_slow
+565, sound low_whoosh_short
+633, sound typewriter_short
+719, sound typewriter_ding
+738, sound stamp
+762, sound win_tone
+
+
+76, pause
+100, pause during civil war
+294, pause
+322, pause
+335, pause
+371, pause
+497, pause
+564, pause
+632, pause
+716, pause
+800, pause
+
+

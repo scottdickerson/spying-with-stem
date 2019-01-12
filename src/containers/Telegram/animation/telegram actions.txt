@@ -1,0 +1,60 @@
+//codebook action list
+
+0, sound telegraph_short
+50, sound typewriter_short
+167, sound typewriter_ding
+314, sound envelope
+465, sound slide
+612, sound airy_stick
+622, sound airy_stick
+633, sound airy_stick
+645, sound envelope
+658, sound double_pop
+671, sound double_pop
+680, sound double_pop
+
+686, sound envelope
+722, sound double_pop
+727, sound double_pop
+734, sound double_pop
+772, sound double_pop
+777, sound double_pop
+783, sound double_pop
+814, sound double_pop
+820, sound double_pop
+825, sound double_pop
+
+889, sound envelope
+935, sound whooshLow
+951, sound multiSwoosh
+954, sound telegraph_short
+
+
+
+
+756, sound envelope
+793, sound envelope
+921, sound double_pop
+934, sound double_pop
+943, sound double_pop
+
+1013, sound double_pop
+1042, sound double_pop
+1069, sound double_pop
+1123, sound stamp
+
+
+226, pause
+302, pause
+400, pause
+500, pause
+640, pause
+668, pause
+858, pause
+932, pause
+968, pause
+986, pause
+1025, pause
+1069, pause
+1091, pause
+1161, pause
