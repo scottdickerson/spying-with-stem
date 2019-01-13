@@ -24,16 +24,14 @@ class Cypher extends React.Component {
     details:
       "Cyphers are one of the oldest methods of encryption. Each letter of the alphabet is replaced by a symbol. "
   };
-  handleFrameUpdate = frame => {
-    const matchingAction = actions.find(action => action.frame === frame);
+  handleNextAction = action => {
     if (
-      matchingAction &&
-      (matchingAction.action === ANIMATION_ACTIONS.UPDATE_TEXT ||
-        matchingAction.action === ANIMATION_ACTIONS.PAUSE)
+      action.action === ANIMATION_ACTIONS.UPDATE_TEXT ||
+      action.action === ANIMATION_ACTIONS.PAUSE
     ) {
       this.setState({
-        ...matchingAction,
-        subTitle: matchingAction.subTitle || null
+        ...action,
+        subTitle: action.subTitle || null
       });
     }
   };
@@ -55,7 +53,7 @@ class Cypher extends React.Component {
               { name: "broken.png", path: broken }
             ]}
             actions={actions}
-            onFrameUpdate={this.handleFrameUpdate}
+            onNextAction={this.handleNextAction}
           />
         }
         rightPane={

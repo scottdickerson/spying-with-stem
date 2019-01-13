@@ -23,7 +23,7 @@ export default class LottieControl extends React.Component {
       PropTypes.shape({ name: PropTypes.string, path: PropTypes.string })
     ),
     isLooping: PropTypes.bool,
-    onFrameUpdate: PropTypes.func,
+    onNextAction: PropTypes.func,
     isDebug: PropTypes.bool
   };
 
@@ -72,18 +72,19 @@ export default class LottieControl extends React.Component {
 
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
-    const { actions, onFrameUpdate } = this.props;
+    const { actions, onNextAction } = this.props;
 
     const currentFrame = Math.floor(frame.currentTime);
     if (actions && this.previousFrame <= currentFrame) {
       this.previousFrame = currentFrame;
-      if (onFrameUpdate) {
-        onFrameUpdate(currentFrame);
-      }
+
       this.setState({ currentFrame: currentFrame });
       const action = this.findAction(actions, currentFrame);
       if (action) {
         // found an action for this frame
+        if (onNextAction) {
+          onNextAction(action);
+        }
         switch (action.action) {
           case ANIMATION_ACTIONS.PAUSE:
             this.setState({ isPaused: true, currentFrame: currentFrame });

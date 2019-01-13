@@ -1,4 +1,3 @@
-import lowWhoosh from "../../../../sounds/whooshLow.mp3";
 import airyStick from "../../../../sounds/airy_stick.mp3";
 import paperWriteShort from "../../../../sounds/paper_write_short.mp3";
 import paperWriteLong from "../../../../sounds/paper_write_long.mp3";
@@ -64,7 +63,7 @@ export default [
   },
   {
     frame: 335,
-    action: "pause",
+    action: "updateText",
     title: "Break the Code!",
     subTitle: "Step 1",
     details: "Count how often each symbol is used. "
@@ -109,7 +108,7 @@ export default [
       "Compare the frequency of symbols to the frequency of letter in English. "
   },
 
-  // Compare the symbols
+  // Compare the frequency symbols
   {
     frame: 563,
     action: "playSound",
