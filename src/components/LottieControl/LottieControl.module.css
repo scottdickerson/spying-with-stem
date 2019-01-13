@@ -1,0 +1,31 @@
+.frameCounter {
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin: auto;
+  width: 200px;
+  height: 100px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.prompt {
+  text-transform: uppercase;
+  color: #f58f00;
+  position: absolute;
+  font-family: GhostLight;
+  width: 400px;
+  height: 100px;
+  left: 0px;
+  right: 0px;
+  top: 30px;
+  margin: auto;
+  text-align: center;
+  font-size: 28px;
+}

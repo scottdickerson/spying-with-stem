@@ -1,12 +1,16 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Lottie from "react-lottie";
 import Sound from "react-sound";
 import { ANIMATION_ACTIONS } from "../../constants/constants";
 import { updateImagePaths } from "./lottieUtils";
+import "animate.css/animate.min.css";
+import styles from "./LottieControl.module.css";
 
+const promptID = "animationPausePrompt";
 export default class LottieControl extends React.Component {
-  state = { isPaused: false, currentFrame: 0 };
+  state = { isPaused: false, currentFrame: 0, isPromptShowing: false };
   soundMap = {};
   actionMap = {};
   previousFrame = 0;
@@ -24,7 +28,8 @@ export default class LottieControl extends React.Component {
     ),
     isLooping: PropTypes.bool,
     onNextAction: PropTypes.func,
-    isDebug: PropTypes.bool
+    isDebug: PropTypes.bool,
+    promptDelay: PropTypes.number
   };
 
   static defaultProps = {
@@ -39,16 +44,30 @@ export default class LottieControl extends React.Component {
       this.resume
     );
     this.clickListener = document.body.addEventListener("click", this.resume);
+    if (!document.getElementById(promptID)) {
+      this.portalDiv = document.createElement("div");
+      this.portalDiv.setAttribute("id", promptID);
+      this.portalDiv.setAttribute(
+        "class",
+        `${styles.overlay} animated pulse infinite`
+      );
+      document.body.appendChild(this.portalDiv);
+    }
   }
 
   componentWillUmount() {
     document.body.removeEventListener(this.touchListener);
     document.body.removeEventListener(this.clickListener);
+    clearTimeout(this.showPrompt);
+    if (this.portalDiv) {
+      document.body.removeChild(this.portalDiv);
+    }
   }
 
   resume = () => {
     if (this.state.isPaused) {
-      this.setState({ isPaused: false });
+      this.setState({ isPaused: false, isPromptShowing: false });
+      clearTimeout(this.showPrompt);
     }
   };
 
@@ -72,7 +91,7 @@ export default class LottieControl extends React.Component {
 
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
-    const { actions, onNextAction } = this.props;
+    const { actions, onNextAction, promptDelay } = this.props;
 
     const currentFrame = Math.floor(frame.currentTime);
     if (actions && this.previousFrame <= currentFrame) {
@@ -88,6 +107,12 @@ export default class LottieControl extends React.Component {
         switch (action.action) {
           case ANIMATION_ACTIONS.PAUSE:
             this.setState({ isPaused: true, currentFrame: currentFrame });
+            if (promptDelay) {
+              this.promptTimeout = setTimeout(
+                () => this.setState({ isPromptShowing: true }),
+                promptDelay
+              );
+            }
             break;
           default: {
             break;
@@ -105,7 +130,7 @@ export default class LottieControl extends React.Component {
 
   render() {
     const { animationData, imageMap, isLooping, actions, isDebug } = this.props;
-    const { isPaused, currentFrame } = this.state;
+    const { isPaused, currentFrame, isPromptShowing } = this.state;
 
     const defaultOptions = {
       loop: isLooping,
@@ -151,22 +176,14 @@ export default class LottieControl extends React.Component {
               );
             })}
         {isDebug ? (
-          <h3
-            style={{
-              color: "white",
-              position: "absolute",
-              top: "0px",
-              right: "0px",
-              left: "0px",
-              bottom: "0px",
-              margin: "auto",
-              width: "200px",
-              height: "100px"
-            }}
-          >
-            Current Frame: {currentFrame}
-          </h3>
+          <h3 className={styles.frameCounter}>Current Frame: {currentFrame}</h3>
         ) : null}
+        {isPromptShowing && this.portalDiv
+          ? ReactDOM.createPortal(
+              <h3 className={styles.prompt}>Touch to continue</h3>,
+              this.portalDiv
+            )
+          : null}
       </div>
     );
   }
