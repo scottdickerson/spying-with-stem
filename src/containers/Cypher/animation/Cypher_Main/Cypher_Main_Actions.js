@@ -45,10 +45,14 @@ export default [
     soundFile: airyStick
   },
   {
-    frame: 304,
-    action: "pause",
+    frame: 302,
+    action: "updateText",
     title: "Break the Code!",
     details: "To break a cypher - use frequency analysis"
+  },
+  {
+    frame: 304,
+    action: "pause"
   },
   {
     frame: 304,
@@ -99,16 +103,16 @@ export default [
     action: "playSound",
     soundFile: swooshSlow
   },
+  { frame: 562, action: "pause" },
+  // Compare the frequency symbols
   {
-    frame: 562,
-    action: "pause",
+    frame: 564,
+    action: "updateText",
     title: "Break the Code!",
     subTitle: "Step 2",
     details:
       "Compare the frequency of symbols to the frequency of letter in English. "
   },
-
-  // Compare the frequency symbols
   {
     frame: 563,
     action: "playSound",
@@ -117,13 +121,16 @@ export default [
   // Type the replacements
   {
     frame: 632,
-    action: "pause",
+    action: "pause"
+  },
+  {
+    frame: 634,
     title: "Break the Code!",
     subTitle: "Step 3",
     details: "Replace each symbol with a matching letter. "
   },
   {
-    frame: 633,
+    frame: 634,
     action: "playSound",
     soundFile: typeWriterShort
   },

@@ -25,10 +25,7 @@ class Cypher extends React.Component {
       "Cyphers are one of the oldest methods of encryption. Each letter of the alphabet is replaced by a symbol. "
   };
   handleNextAction = action => {
-    if (
-      action.action === ANIMATION_ACTIONS.UPDATE_TEXT ||
-      action.action === ANIMATION_ACTIONS.PAUSE
-    ) {
+    if (action.action === ANIMATION_ACTIONS.UPDATE_TEXT) {
       this.setState({
         ...action,
         subTitle: action.subTitle || null
