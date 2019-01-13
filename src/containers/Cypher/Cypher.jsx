@@ -41,6 +41,7 @@ class Cypher extends React.Component {
         leftPane={
           <LottieControl
             animationData={animationData}
+            isDebug={true}
             imageMap={[
               { name: "Artboard_1.png", path: Artboard1 },
               {

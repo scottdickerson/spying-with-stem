@@ -17,13 +17,14 @@ export default [
     action: "playSound",
     soundFile: paperWriteShort
   },
+  { frame: 70, action: "pause" },
   {
     frame: 107,
     action: "playSound",
     soundFile: paperWriteLong
   },
   {
-    frame: 130,
+    frame: 102,
     action: "updateText",
     title: "Cyphers",
     details:
@@ -43,6 +44,10 @@ export default [
     frame: 265,
     action: "playSound",
     soundFile: airyStick
+  },
+  {
+    frame: 290,
+    action: "pause"
   },
   {
     frame: 302,
@@ -125,6 +130,7 @@ export default [
   },
   {
     frame: 634,
+    action: "updateText",
     title: "Break the Code!",
     subTitle: "Step 3",
     details: "Replace each symbol with a matching letter. "
@@ -137,9 +143,13 @@ export default [
 
   // Decrypted the letter
   {
-    frame: 719,
+    frame: 713,
     action: "playSound",
     soundFile: typeWriterDing
+  },
+  {
+    frame: 716,
+    action: "pause"
   },
   {
     frame: 738,

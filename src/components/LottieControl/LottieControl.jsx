@@ -63,7 +63,7 @@ export default class LottieControl extends React.Component {
 
     if (matchingAction) {
       console.log(`matchingAction: ${JSON.stringify(matchingAction)}`);
-      // only return if we've never run it before
+      // keep track that we've run it
       this.actionMap[matchingAction.frame] = true;
       return matchingAction;
     }
