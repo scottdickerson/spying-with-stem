@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Lottie from "react-lottie";
+import Sound from "react-sound";
 import { ANIMATION_ACTIONS } from "../../constants/constants";
 import { updateImagePaths } from "./lottieUtils";
 
@@ -8,7 +9,8 @@ const findAction = (actions, frame) => {
   return actions.find(action => action.frame === frame);
 };
 export default class LottieControl extends React.Component {
-  state = { isStopped: false, isPaused: false };
+  state = { isPaused: false, currentFrame: 0 };
+  soundMap = {};
   previousFrame = 0;
   static propTypes = {
     animationData: PropTypes.object.isRequired,
@@ -23,12 +25,14 @@ export default class LottieControl extends React.Component {
       PropTypes.shape({ name: PropTypes.string, path: PropTypes.string })
     ),
     isLooping: PropTypes.bool,
-    onFrameUpdate: PropTypes.func
+    onFrameUpdate: PropTypes.func,
+    isDebug: PropTypes.bool
   };
 
   static defaultProps = {
     imageMap: [],
-    isLooping: false
+    isLooping: false,
+    isDebug: false
   };
 
   componentDidMount() {
@@ -60,15 +64,15 @@ export default class LottieControl extends React.Component {
       if (onFrameUpdate) {
         onFrameUpdate(currentFrame);
       }
+      this.setState({ currentFrame: currentFrame });
       const action = findAction(actions, currentFrame);
       if (action) {
         // found an action for this frame
         switch (action.action) {
           case ANIMATION_ACTIONS.PAUSE:
-            this.setState({ isPaused: true });
+            this.setState({ isPaused: true, currentFrame: currentFrame });
             break;
           default: {
-            console.error(`unknown action: ${action}`);
             break;
           }
         }
@@ -76,8 +80,15 @@ export default class LottieControl extends React.Component {
     }
   };
 
+  // I don't know why, but it seems I have to keep track to keep sounds from replaying
+  finishedSound = soundId => {
+    this.soundMap[soundId] = true;
+  };
+  hasSoundPlayed = soundId => this.soundMap[soundId];
+
   render() {
-    const { animationData, imageMap, isLooping } = this.props;
+    const { animationData, imageMap, isLooping, actions, isDebug } = this.props;
+    const { isPaused, currentFrame } = this.state;
 
     const defaultOptions = {
       loop: isLooping,
@@ -92,8 +103,8 @@ export default class LottieControl extends React.Component {
       <div>
         <Lottie
           options={defaultOptions}
-          isStopped={this.state.isStopped}
-          isPaused={this.state.isPaused}
+          isPaused={isPaused}
+          autoLoad
           isClickToPauseDisabled={true}
           isSubframe={false}
           eventListeners={[
@@ -103,6 +114,42 @@ export default class LottieControl extends React.Component {
             }
           ]}
         />
+        {actions &&
+          actions // are there any sound files that match the current frame?
+            .filter(action => action.action === ANIMATION_ACTIONS.PLAY_SOUND)
+            .map(action => {
+              const uniqueSoundId = `${action.soundFile}-${action.frame}`;
+              return (
+                <Sound
+                  url={action.soundFile}
+                  playStatus={
+                    action.frame <= currentFrame &&
+                    !this.hasSoundPlayed(uniqueSoundId)
+                      ? Sound.status.PLAYING
+                      : Sound.status.PAUSED
+                  }
+                  onFinishedPlaying={() => this.finishedSound(uniqueSoundId)}
+                  key={uniqueSoundId}
+                />
+              );
+            })}
+        {isDebug ? (
+          <h3
+            style={{
+              color: "white",
+              position: "absolute",
+              top: "0px",
+              right: "0px",
+              left: "0px",
+              bottom: "0px",
+              margin: "auto",
+              width: "200px",
+              height: "100px"
+            }}
+          >
+            Current Frame: {currentFrame}
+          </h3>
+        ) : null}
       </div>
     );
   }

@@ -7,10 +7,11 @@ import { ANIMATION_ACTIONS } from "../../constants/constants";
 
 import animationData from "./animation/Cypher_Main/Cypher_Main.json";
 import animationRight from "./animation/Cypher_Right/Cypher_Right.json";
-import actions from "./animation/Cypher_Main/Cypher_Main_Actions.json";
+import actions from "./animation/Cypher_Main/Cypher_Main_Actions";
 import LottieControl from "../../components/LottieControl/LottieControl";
-import image0 from "./animation/Cypher_Main/images/img_0.png";
-import image1 from "./animation/Cypher_Main/images/img_1.png";
+import Artboard1 from "./animation/Cypher_Main/images/Artboard_1.png";
+import broken from "./animation/Cypher_Main/images/broken.png";
+import UDOTC from "./animation/Cypher_Main/images/United_Daughters_of_the_Confederacy-BW.jpg";
 
 const propTypes = {
   isOpen: PropTypes.bool,
@@ -19,15 +20,21 @@ const propTypes = {
 
 class Cypher extends React.Component {
   state = {
-    title: "Break the code!",
-    subTitle: "Frequency Analysis",
+    title: "Cyphers",
     details:
-      "Cyphers are one of the oldest types of encryption. Each letter of the alphabet is replaced by a symbol. <p> Spies like Rose Greenhow used cyphers to send secret messages."
+      "Cyphers are one of the oldest methods of encryption. Each letter of the alphabet is replaced by a symbol. "
   };
   handleFrameUpdate = frame => {
     const matchingAction = actions.find(action => action.frame === frame);
-    if (matchingAction && matchingAction.action === ANIMATION_ACTIONS.PAUSE) {
-      this.setState({ ...matchingAction });
+    if (
+      matchingAction &&
+      (matchingAction.action === ANIMATION_ACTIONS.UPDATE_TEXT ||
+        matchingAction.action === ANIMATION_ACTIONS.PAUSE)
+    ) {
+      this.setState({
+        ...matchingAction,
+        subTitle: matchingAction.subTitle || null
+      });
     }
   };
   render() {
@@ -38,10 +45,15 @@ class Cypher extends React.Component {
         onCloseSite={onCloseSite}
         leftPane={
           <LottieControl
+            isDebug={true}
             animationData={animationData}
             imageMap={[
-              { name: "img_0.png", path: image0 },
-              { name: "img_1.png", path: image1 }
+              { name: "Artboard_1.png", path: Artboard1 },
+              {
+                name: "United_Daughters_of_the_Confederacy-BW.jpg",
+                path: UDOTC
+              },
+              { name: "broken.png", path: broken }
             ]}
             actions={actions}
             onFrameUpdate={this.handleFrameUpdate}
@@ -51,7 +63,13 @@ class Cypher extends React.Component {
           <Details
             {...this.state}
             animation={
-              <LottieControl animationData={animationRight} actions={actions} />
+              <LottieControl
+                animationData={animationRight}
+                actions={actions.filter(
+                  // only pause, no audio
+                  action => action.action === ANIMATION_ACTIONS.PAUSE
+                )}
+              />
             }
           />
         }
