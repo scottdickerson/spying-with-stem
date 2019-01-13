@@ -29,8 +29,9 @@ class SpyingMainScreen extends React.Component {
       <MainScreen>
         <TopTitle imageURL={titleImage}>SPYING with S.T.E.M</TopTitle>
         <Intro
-          intro="People spy on other people"
-          details="What's up with that"
+          intro="<p>Cryptography, the science of secret codes, has evolved in times of warfare.
+</p>
+Explore three historic methods for passing - and breaking - secret codes. "
         />
         <StorySelector
           onSelect={this.handleSelection}
