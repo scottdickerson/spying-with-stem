@@ -7,6 +7,7 @@ import slide from "../../../../sounds/slide.mp3";
 import doublePop from "../../../../sounds/double_pop.mp3";
 import multiSwoosh from "../../../../sounds/multiSwoosh.mp3";
 import stamp from "../../../../sounds/stamp.mp3";
+import winTone from "../../../../sounds/win_tone.mp3";
 
 export default [
   {
@@ -250,9 +251,15 @@ export default [
     details:
       "Once broken, this famous secret message from the Germans convinced the United States to enter World War I. "
   },
+
   {
-    frame: 1123,
+    frame: 1115,
     action: "playSound",
     soundFile: stamp
+  },
+  {
+    frame: 1125,
+    action: "playSound",
+    soundFile: winTone
   }
 ];
