@@ -5,12 +5,10 @@ import Sound from "react-sound";
 import { ANIMATION_ACTIONS } from "../../constants/constants";
 import { updateImagePaths } from "./lottieUtils";
 
-const findAction = (actions, frame) => {
-  return actions.find(action => action.frame === frame);
-};
 export default class LottieControl extends React.Component {
   state = { isPaused: false, currentFrame: 0 };
   soundMap = {};
+  actionMap = {};
   previousFrame = 0;
   static propTypes = {
     animationData: PropTypes.object.isRequired,
@@ -54,18 +52,36 @@ export default class LottieControl extends React.Component {
     }
   };
 
+  findAction = (actions, frame) => {
+    // Need to handle frameskip in case the frame number doesn't match exactly
+    const matchingAction = actions.find(
+      action =>
+        action.frame <= frame &&
+        action.action !== ANIMATION_ACTIONS.PLAY_SOUND && // sounds are tracked separately
+        !this.actionMap[action.frame]
+    );
+
+    if (matchingAction) {
+      console.log(`matchingAction: ${JSON.stringify(matchingAction)}`);
+      // only return if we've never run it before
+      this.actionMap[matchingAction.frame] = true;
+      return matchingAction;
+    }
+    return false;
+  };
+
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
     const { actions, onFrameUpdate } = this.props;
 
     const currentFrame = Math.floor(frame.currentTime);
-    if (actions && this.previousFrame !== currentFrame) {
+    if (actions && this.previousFrame <= currentFrame) {
       this.previousFrame = currentFrame;
       if (onFrameUpdate) {
         onFrameUpdate(currentFrame);
       }
       this.setState({ currentFrame: currentFrame });
-      const action = findAction(actions, currentFrame);
+      const action = this.findAction(actions, currentFrame);
       if (action) {
         // found an action for this frame
         switch (action.action) {

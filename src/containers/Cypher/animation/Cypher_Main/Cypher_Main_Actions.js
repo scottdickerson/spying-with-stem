@@ -19,16 +19,16 @@ export default [
     soundFile: paperWriteShort
   },
   {
-    frame: 100,
+    frame: 107,
+    action: "playSound",
+    soundFile: paperWriteLong
+  },
+  {
+    frame: 130,
     action: "updateText",
     title: "Cyphers",
     details:
       "During the Civil War, Spies like Rose Greenhow used cyphers to send secret messages. "
-  },
-  {
-    frame: 107,
-    action: "playSound",
-    soundFile: paperWriteLong
   },
   {
     frame: 140,
@@ -58,7 +58,7 @@ export default [
   },
   // Wait for them to touch it to open the envelope
   {
-    frame: 305,
+    frame: 308,
     action: "playSound",
     soundFile: envelope
   },
@@ -113,7 +113,7 @@ export default [
   {
     frame: 563,
     action: "playSound",
-    soundFile: lowWhoosh
+    soundFile: swooshSlow
   },
   // Type the replacements
   {
@@ -146,7 +146,7 @@ export default [
     soundFile: winTone
   },
   {
-    frame: 800,
+    frame: 763,
     action: "updateText",
     title: "Code Broken",
     details: "Information from broken codes helped win battles. "
