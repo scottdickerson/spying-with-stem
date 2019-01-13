@@ -239,7 +239,7 @@ export default [
   },
   // Broken!!!
   {
-    frame: 1091,
+    frame: 1099,
     action: "pause"
   },
   {

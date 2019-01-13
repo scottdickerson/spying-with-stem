@@ -58,7 +58,7 @@ export default class LottieControl extends React.Component {
   componentWillUnmount() {
     document.body.removeEventListener("touchstart", this.touchListener);
     document.body.removeEventListener("click", this.clickListener);
-    clearTimeout(this.showPrompt);
+    clearTimeout(this.promptTimeout);
     if (this.portalDiv) {
       document.body.removeChild(this.portalDiv);
     }
@@ -67,7 +67,7 @@ export default class LottieControl extends React.Component {
   resume = () => {
     if (this.state.isPaused) {
       this.setState({ isPaused: false, isPromptShowing: false });
-      clearTimeout(this.showPrompt);
+      clearTimeout(this.promptTimeout);
     }
   };
 
