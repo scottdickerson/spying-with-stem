@@ -52,6 +52,8 @@ const Telegram = ({ isOpen, onCloseSite }) => (
     leftPane={
       <LottieControl
         animationData={leftAnimation}
+        isDebug={true}
+        promptDelay={3000}
         imageMap={[
           { name: "broken.png", path: broken },
           { name: "intercepted.png", path: intercepted }
@@ -61,9 +63,6 @@ const Telegram = ({ isOpen, onCloseSite }) => (
     }
     rightPane={
       <Details
-        title="Break the code!"
-        subTitle="Frequency Analysis"
-        details="Telegrams are one of the oldest types of encryption. Each letter of the alphabet is replaced by a symbol. <p> Spies like Rose Greenhow used cyphers to send secret messages."
         animation={
           <LottieControl
             animationData={rightAnimation}
@@ -100,8 +99,8 @@ const Telegram = ({ isOpen, onCloseSite }) => (
               { name: "codebook_sprite_00029.png", path: codebook29 }
             ]}
             actions={actions.filter(
-              // only pause, no audio
-              action => action.action === ANIMATION_ACTIONS.PAUSE
+              // audio is handled by the other control
+              action => action.action !== ANIMATION_ACTIONS.PLAY_SOUND
             )}
           />
         }

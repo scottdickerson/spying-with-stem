@@ -55,9 +55,9 @@ export default class LottieControl extends React.Component {
     }
   }
 
-  componentWillUmount() {
-    document.body.removeEventListener(this.touchListener);
-    document.body.removeEventListener(this.clickListener);
+  componentWillUnmount() {
+    document.body.removeEventListener("touchstart", this.touchListener);
+    document.body.removeEventListener("click", this.clickListener);
     clearTimeout(this.showPrompt);
     if (this.portalDiv) {
       document.body.removeChild(this.portalDiv);

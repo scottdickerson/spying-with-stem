@@ -1,6 +1,5 @@
-import lowWhoosh from "../../../../sounds/low_whoosh_short.mp3";
-import airyStick from "../../../../sounds/airy_stick.mp3";
 import envelope from "../../../../sounds/envelope.mp3";
+import pistol from "../../../../sounds/pistol.mp3";
 import typeWriterShort from "../../../../sounds/Typewriter_short.mp3";
 import typeWriterDing from "../../../../sounds/typewriter_ding.mp3";
 import telegraphShort from "../../../../sounds/telegraph_short.mp3";
@@ -11,98 +10,12 @@ import stamp from "../../../../sounds/stamp.mp3";
 
 export default [
   {
-    frame: 226,
-    action: "pause",
-    title: "Touch the screen",
-    subTitle: "To decrypt the codes",
-    details: "Use <em>STEM</em> to decrypt the code"
+    frame: 0,
+    action: "updateText",
+    title: "Code Books",
+    details:
+      "During World War 1, communication technologies improved. So cryptography changed. "
   },
-  {
-    frame: 302,
-    action: "pause",
-    title: "Touch the screen",
-    subTitle: "To decrypt the codes",
-    details: "Use <em>STEM</em> to decrypt the code"
-  },
-  {
-    frame: 400,
-    action: "pause",
-    title: "One down",
-    subTitle: "One letter has been decoded",
-    details: "Touch the screen to decode the next letter"
-  },
-  {
-    frame: 500,
-    action: "pause",
-    title: "Two down",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 640,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 668,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 858,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 932,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 968,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 1025,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 1069,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 1091,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-  {
-    frame: 1161,
-    action: "pause",
-    title: "Almost there",
-    subTitle: "Message almost decrypted",
-    details: "Finish the JOB!"
-  },
-
-  //Sound actions
   {
     frame: 0,
     action: "playSound",
@@ -118,6 +31,34 @@ export default [
     action: "playSound",
     soundFile: typeWriterDing
   },
+  // More Info
+  {
+    frame: 206,
+    action: "pause"
+  },
+  {
+    frame: 212,
+    action: "updateText",
+    details:
+      "Codes that replaced whole words, instead of individual letters, were harder to break than cyphers. "
+  },
+  {
+    frame: 215,
+    action: "playSound",
+    soundFile: pistol
+  },
+  // More Info 2
+  {
+    frame: 300,
+    action: "pause"
+  },
+
+  {
+    frame: 302,
+    action: "updateText",
+    details:
+      "Germany sent secret messages using multiple sets of codes - written in tiny codebooks."
+  },
   {
     frame: 314,
     action: "playSound",
@@ -128,20 +69,40 @@ export default [
     action: "playSound",
     soundFile: slide
   },
+  // Step 1 Decoding
+  { frame: 500, action: "pause" },
+  {
+    frame: 502,
+    action: "updateText",
+    title: "Break the Code!",
+    subTitle: "Step 1",
+    details: "Steal as many telegrams and codebooks as you can. "
+  },
   {
     frame: 612,
     action: "playSound",
-    soundFile: airyStick
+    soundFile: pistol
   },
   {
     frame: 622,
     action: "playSound",
-    soundFile: airyStick
+    soundFile: pistol
   },
   {
     frame: 633,
     action: "playSound",
-    soundFile: airyStick
+    soundFile: pistol
+  },
+  // Step 2 Decoding
+  {
+    frame: 640,
+    action: "pause"
+  },
+  {
+    frame: 642,
+    action: "updateText",
+    subTitle: "Step 2",
+    details: "Match and replace the codes you have. "
   },
   {
     frame: 645,
@@ -184,6 +145,12 @@ export default [
     soundFile: doublePop
   },
   {
+    frame: 756,
+    action: "playSound",
+    soundFile: envelope
+  },
+
+  {
     frame: 772,
     action: "playSound",
     soundFile: doublePop
@@ -197,6 +164,11 @@ export default [
     frame: 783,
     action: "playSound",
     soundFile: doublePop
+  },
+  {
+    frame: 793,
+    action: "playSound",
+    soundFile: envelope
   },
   {
     frame: 814,
@@ -219,31 +191,6 @@ export default [
     soundFile: envelope
   },
   {
-    frame: 935,
-    action: "playSound",
-    soundFile: lowWhoosh
-  },
-  {
-    frame: 951,
-    action: "playSound",
-    soundFile: multiSwoosh
-  },
-  {
-    frame: 954,
-    action: "playSound",
-    soundFile: telegraphShort
-  },
-  {
-    frame: 756,
-    action: "playSound",
-    soundFile: envelope
-  },
-  {
-    frame: 793,
-    action: "playSound",
-    soundFile: envelope
-  },
-  {
     frame: 921,
     action: "playSound",
     soundFile: doublePop
@@ -257,6 +204,23 @@ export default [
     frame: 943,
     action: "playSound",
     soundFile: doublePop
+  },
+  // telegrams come together
+  {
+    frame: 951,
+    action: "playSound",
+    soundFile: multiSwoosh
+  },
+  // Step 3 Decoding
+  {
+    frame: 968,
+    action: "pause"
+  },
+  {
+    frame: 970,
+    action: "updateText",
+    subTitle: "Step 3",
+    details: "Use algebra to solve for the codes you don’t have. "
   },
   {
     frame: 1013,
@@ -272,6 +236,19 @@ export default [
     frame: 1069,
     action: "playSound",
     soundFile: doublePop
+  },
+  // Broken!!!
+  {
+    frame: 1091,
+    action: "pause"
+  },
+  {
+    frame: 1100,
+    action: "updateText",
+    title: "Code Broken",
+    subTitle: "Zimmerman Telegram",
+    details:
+      "Once broken, this famous secret message from the Germans convinced the United States to enter World War I. "
   },
   {
     frame: 1123,

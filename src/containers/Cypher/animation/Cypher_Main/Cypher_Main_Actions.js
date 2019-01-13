@@ -13,6 +13,13 @@ import winTone from "../../../../sounds/win_tone.mp3";
 export default [
   // Start the script
   {
+    frame: 0,
+    action: "updateText",
+    title: "Cyphers",
+    details:
+      "Cyphers are one of the oldest methods of encryption. Each letter of the alphabet is replaced by a symbol. "
+  },
+  {
     frame: 35,
     action: "playSound",
     soundFile: paperWriteShort
