@@ -6,6 +6,9 @@ import Intro from "../../components/Intro/Intro";
 import TopTitle from "../../components/TopTitle/TopTitle";
 import titleImage from "./img/HarrisonCountyTitle.png";
 import StorySelector from "../../components/StorySelector/StorySelector";
+import codebook from "./img/CodeBook.png";
+import computing from "./img/Computing.png";
+import cypher from "./img/Cypher.png";
 
 class SpyingMainScreen extends React.Component {
   handleSelection = index => {
@@ -32,9 +35,9 @@ class SpyingMainScreen extends React.Component {
         <StorySelector
           onSelect={this.handleSelection}
           stories={[
-            { name: "CYPHER" },
-            { name: "CODE BOOK" },
-            { name: "COMPUTING" }
+            { name: "CYPHER", image: cypher },
+            { name: "CODE BOOK", image: codebook },
+            { name: "COMPUTING", image: computing }
           ]}
         />
       </MainScreen>

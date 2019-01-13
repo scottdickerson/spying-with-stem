@@ -20,7 +20,7 @@ const StorySelector = ({ stories, onSelect }) => {
             tabIndex="0"
             onClick={() => onSelect(index, story)}
           >
-            <img alt={story.name} className={styles.image} />
+            <img alt={story.name} src={story.image} className={styles.image} />
             <div className={styles.name}>{story.name}</div>
           </div>
         ))}
