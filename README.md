@@ -20,6 +20,11 @@ from within the root directory of the project run:
 yarn install
 ```
 
+## Configure chrome for audio
+
+We have to setup our browser like this to allow sounds to playback without user interaction
+<https://stackoverflow.com/questions/49930680/how-to-handle-uncaught-in-promise-domexception-play-failed-because-the-use>
+
 ## startup the project
 
 yarn start

@@ -6,6 +6,9 @@ import Intro from "../../components/Intro/Intro";
 import TopTitle from "../../components/TopTitle/TopTitle";
 import titleImage from "./img/HarrisonCountyTitle.png";
 import StorySelector from "../../components/StorySelector/StorySelector";
+import codebook from "./img/CodeBook.png";
+import computing from "./img/Computing.png";
+import cypher from "./img/Cypher.png";
 
 class SpyingMainScreen extends React.Component {
   handleSelection = index => {
@@ -26,15 +29,16 @@ class SpyingMainScreen extends React.Component {
       <MainScreen>
         <TopTitle imageURL={titleImage}>SPYING with S.T.E.M</TopTitle>
         <Intro
-          intro="People spy on other people"
-          details="What's up with that"
+          intro="<p>Cryptography, the science of secret codes, has evolved in times of warfare.
+</p>
+Explore three historic methods for passing - and breaking - secret codes. "
         />
         <StorySelector
           onSelect={this.handleSelection}
           stories={[
-            { name: "CYPHER" },
-            { name: "CODE BOOK" },
-            { name: "COMPUTING" }
+            { name: "CYPHER", image: cypher },
+            { name: "CODE BOOK", image: codebook },
+            { name: "COMPUTING", image: computing }
           ]}
         />
       </MainScreen>

@@ -1,6 +1,7 @@
 export const ANIMATION_ACTIONS = {
   PLAY_SOUND: "playSound",
-  PAUSE: "pause"
+  PAUSE: "pause",
+  UPDATE_TEXT: "updateText"
 };
 
 export const ROUTES = {
