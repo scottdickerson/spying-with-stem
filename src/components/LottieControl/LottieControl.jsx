@@ -28,6 +28,8 @@ export default class LottieControl extends React.Component {
     ),
     isLooping: PropTypes.bool,
     onNextAction: PropTypes.func,
+    /** Callback called when the loop completes */
+    onComplete: PropTypes.func,
     isDebug: PropTypes.bool,
     promptDelay: PropTypes.number
   };
@@ -65,9 +67,15 @@ export default class LottieControl extends React.Component {
   }
 
   resume = () => {
+    const { onComplete } = this.props;
     if (this.state.isPaused) {
       this.setState({ isPaused: false, isPromptShowing: false });
       clearTimeout(this.promptTimeout);
+    }
+    if (this.state.isComplete) {
+      this.setState({ isPaused: false, isPromptShowing: false });
+      clearTimeout(this.promptTimeout);
+      onComplete && onComplete();
     }
   };
 
@@ -89,9 +97,18 @@ export default class LottieControl extends React.Component {
     return false;
   };
 
+  showPrompt = () => {
+    const { promptDelay } = this.props;
+    if (promptDelay) {
+      this.promptTimeout = setTimeout(
+        () => this.setState({ isPromptShowing: true }),
+        promptDelay
+      );
+    }
+  };
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
-    const { actions, onNextAction, promptDelay } = this.props;
+    const { actions, onNextAction } = this.props;
 
     const currentFrame = Math.floor(frame.currentTime);
     if (actions && this.previousFrame <= currentFrame) {
@@ -107,18 +124,22 @@ export default class LottieControl extends React.Component {
         switch (action.action) {
           case ANIMATION_ACTIONS.PAUSE:
             this.setState({ isPaused: true, currentFrame: currentFrame });
-            if (promptDelay) {
-              this.promptTimeout = setTimeout(
-                () => this.setState({ isPromptShowing: true }),
-                promptDelay
-              );
-            }
+            this.showPrompt();
             break;
           default: {
             break;
           }
         }
       }
+    }
+  };
+
+  handleComplete = () => {
+    const { isComplete } = this.state;
+    // Unfortunately this is called multiple times by lottie
+    if (!isComplete) {
+      this.setState({ isComplete: true });
+      this.showPrompt();
     }
   };
 
@@ -153,6 +174,10 @@ export default class LottieControl extends React.Component {
             {
               eventName: "enterFrame",
               callback: this.updateFrame
+            },
+            {
+              eventName: "complete",
+              callback: this.handleComplete
             }
           ]}
         />
