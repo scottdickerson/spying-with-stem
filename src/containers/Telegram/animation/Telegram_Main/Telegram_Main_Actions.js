@@ -214,11 +214,11 @@ export default [
   },
   // Step 3 Decoding
   {
-    frame: 968,
+    frame: 988,
     action: "pause"
   },
   {
-    frame: 970,
+    frame: 990,
     action: "updateText",
     subTitle: "Step 3",
     details: "Use algebra to solve for the codes you don’t have. "
@@ -238,13 +238,13 @@ export default [
     action: "playSound",
     soundFile: doublePop
   },
-  // Broken!!!
+  // You broke the code!
   {
-    frame: 1099,
+    frame: 1108,
     action: "pause"
   },
   {
-    frame: 1100,
+    frame: 1110,
     action: "updateText",
     title: "Code Broken",
     subTitle: "Zimmerman Telegram",
