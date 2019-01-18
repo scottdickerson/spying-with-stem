@@ -74,11 +74,12 @@
   }
 }
 
-.story:focus {
-  -webkit-animation: scale 0.5s ease-in-out 0s;
-  -moz-animation: scale 0.5s ease-in-out 0s;
-  -o-animation: scale 0.5s ease-in-out 0s;
-  animation: scale 0.5s ease-in-out 0s;
+.story:focus,
+.story:active {
+  -webkit-animation: scale 0.2s ease-in-out 0s;
+  -moz-animation: scale 0.2s ease-in-out 0s;
+  -o-animation: scale 0.2s ease-in-out 0s;
+  animation: scale 0.2s ease-in-out 0s;
 }
 
 .background {

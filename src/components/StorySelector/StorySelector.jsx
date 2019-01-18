@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styles from "./StorySelector.module.css";
+import delay from "lodash/delay";
 
 const propTypes = {
   stories: PropTypes.arrayOf(
@@ -18,7 +19,7 @@ const StorySelector = ({ stories, onSelect }) => {
             key={story.name}
             className={styles.story}
             tabIndex="0"
-            onClick={() => onSelect(index, story)}
+            onClick={() => delay(onSelect, 200, index, story)}
           >
             <img alt={story.name} src={story.image} className={styles.image} />
             <div className={styles.name}>{story.name}</div>

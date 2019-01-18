@@ -7,7 +7,6 @@ import button from "../../../../sounds/button_chime.mp3";
 import swooshSlow from "../../../../sounds/swoosh_slow.mp3";
 import typeWriterShort from "../../../../sounds/Typewriter_short.mp3";
 import typeWriterDing from "../../../../sounds/typewriter_ding.mp3";
-import stamp from "../../../../sounds/stamp.mp3";
 import winTone from "../../../../sounds/win_tone.mp3";
 
 export default [
@@ -24,7 +23,7 @@ export default [
     action: "playSound",
     soundFile: paperWriteShort
   },
-  { frame: 70, action: "pause" },
+  { frame: 68, action: "pause" },
   {
     frame: 107,
     action: "playSound",
@@ -43,11 +42,6 @@ export default [
     soundFile: paperWriteLong
   },
   {
-    frame: 183,
-    action: "playSound",
-    soundFile: envelope
-  },
-  {
     frame: 265,
     action: "playSound",
     soundFile: airyStick
@@ -56,24 +50,27 @@ export default [
     frame: 290,
     action: "pause"
   },
+  // The letter has been sent
   {
     frame: 302,
     action: "updateText",
     title: "Break the Code!",
     details: "To break a cypher - use frequency analysis"
   },
-  {
-    frame: 304,
-    action: "pause"
-  },
+  // Caught the letter
   {
     frame: 304,
     action: "playSound",
     soundFile: pistol
   },
+  {
+    frame: 305,
+    action: "pause"
+  },
+
   // Wait for them to touch it to open the envelope
   {
-    frame: 308,
+    frame: 310,
     action: "playSound",
     soundFile: envelope
   },
@@ -90,32 +87,19 @@ export default [
     action: "playSound",
     soundFile: button
   },
-  {
-    frame: 373,
-    action: "playSound",
-    soundFile: swooshSlow
-  },
+
   {
     frame: 410,
     action: "playSound",
     soundFile: button
   },
-  {
-    frame: 410,
-    action: "playSound",
-    soundFile: swooshSlow
-  },
+
   {
     frame: 458,
     action: "playSound",
     soundFile: button
   },
-  {
-    frame: 458,
-    action: "playSound",
-    soundFile: swooshSlow
-  },
-  { frame: 562, action: "pause" },
+  { frame: 560, action: "pause" },
   // Compare the frequency symbols
   {
     frame: 564,
@@ -126,13 +110,13 @@ export default [
       "Compare the frequency of symbols to the frequency of letter in English. "
   },
   {
-    frame: 563,
+    frame: 567,
     action: "playSound",
     soundFile: swooshSlow
   },
   // Type the replacements
   {
-    frame: 632,
+    frame: 630,
     action: "pause"
   },
   {
@@ -143,25 +127,19 @@ export default [
     details: "Replace each symbol with a matching letter. "
   },
   {
-    frame: 634,
+    frame: 635,
     action: "playSound",
     soundFile: typeWriterShort
   },
-
-  // Decrypted the letter
   {
-    frame: 713,
+    frame: 712,
     action: "playSound",
     soundFile: typeWriterDing
   },
+  // Decrypted the letter
   {
-    frame: 716,
+    frame: 715,
     action: "pause"
-  },
-  {
-    frame: 738,
-    action: "playSound",
-    soundFile: stamp
   },
   {
     frame: 762,

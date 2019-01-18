@@ -72,8 +72,9 @@ export default class LottieControl extends React.Component {
       this.setState({ isPaused: false, isPromptShowing: false });
       clearTimeout(this.promptTimeout);
     }
-    if (this.state.isComplete) {
-      this.setState({ isPaused: false, isPromptShowing: false });
+    if (this.state.isComplete && !this.triggeredComplete) {
+      this.triggeredComplete = true;
+      this.setState({ isPromptShowing: false, isPaused: false });
       clearTimeout(this.promptTimeout);
       onComplete && onComplete();
     }

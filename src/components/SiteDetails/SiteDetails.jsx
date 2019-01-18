@@ -14,9 +14,24 @@ class SiteDetails extends Component {
   };
 
   render() {
-    const { isOpen, rightPane, leftPane, onCloseSite } = this.props;
+    const { isOpen, rightPane, leftPane, onCloseSite, animate } = this.props;
 
-    return (
+    const details = (
+      <div className={styles.siteDetails}>
+        <div className={styles.siteDetailContent}>
+          <div className={styles.siteDetailBackground} />
+          <div className={styles.leftPane}>{leftPane}</div>
+          <div className={styles.rightPane}>{rightPane}</div>
+        </div>
+        <img
+          src={ButtonClose}
+          alt="Close"
+          className={styles.closeButton}
+          onClick={onCloseSite}
+        />
+      </div>
+    );
+    return animate ? (
       <CSSTransition
         mountOnEnter
         unmountOnExit
@@ -24,21 +39,11 @@ class SiteDetails extends Component {
         timeout={500}
         classNames="bottom"
       >
-        <div className={styles.siteDetails}>
-          <div className={styles.siteDetailContent}>
-            <div className={styles.siteDetailBackground} />
-            <div className={styles.leftPane}>{leftPane}</div>
-            <div className={styles.rightPane}>{rightPane}</div>
-          </div>
-          <img
-            src={ButtonClose}
-            alt="Close"
-            className={styles.closeButton}
-            onClick={onCloseSite}
-          />
-        </div>
+        {details}
       </CSSTransition>
-    );
+    ) : isOpen ? (
+      details
+    ) : null;
   }
 }
 

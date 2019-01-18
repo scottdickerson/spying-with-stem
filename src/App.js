@@ -35,8 +35,11 @@ class App extends React.Component {
     window.location.reload(); // reload the whole page
   };
   handleCloseSite = () => {
-    const { history } = this.props;
-    history.goBack();
+    const { location } = this.props;
+    if (location.pathname !== ROUTES.MAINSCREEN) {
+      const { history } = this.props;
+      history.goBack();
+    }
   };
   render() {
     const { location } = this.props;
