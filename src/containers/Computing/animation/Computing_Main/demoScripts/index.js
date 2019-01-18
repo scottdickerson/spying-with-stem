@@ -3,7 +3,7 @@ var animation = bodymovin.loadAnimation({
   renderer: 'svg',
   loop: true,
   autoplay: false,
-  path: 'Enigma_Main.json'
+  path: 'Computing_Main.json'
 })
 
 animation.play();
