@@ -30,4 +30,5 @@ body {
   background-image: url("./img/Background.png");
   opacity: 0.75;
   z-index: 50;
+  overflow:hidden;
 }
