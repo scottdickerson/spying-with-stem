@@ -24,7 +24,7 @@ const Cypher = ({ isOpen, onCloseSite }) => (
     leftPane={
       <LottieControl
         animationData={animationData}
-        promptDelay={3000}
+        promptDelay={2000}
         imageMap={[
           { name: "Artboard_1.png", path: Artboard1 },
           {
@@ -34,6 +34,7 @@ const Cypher = ({ isOpen, onCloseSite }) => (
           { name: "broken.png", path: broken }
         ]}
         actions={actions}
+        onComplete={onCloseSite}
       />
     }
     rightPane={

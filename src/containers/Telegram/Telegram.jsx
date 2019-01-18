@@ -52,12 +52,13 @@ const Telegram = ({ isOpen, onCloseSite }) => (
     leftPane={
       <LottieControl
         animationData={leftAnimation}
-        promptDelay={3000}
+        promptDelay={2000}
         imageMap={[
           { name: "broken.png", path: broken },
           { name: "intercepted.png", path: intercepted }
         ]}
         actions={actions}
+        onComplete={onCloseSite}
       />
     }
     rightPane={
