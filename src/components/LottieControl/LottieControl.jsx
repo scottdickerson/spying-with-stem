@@ -62,7 +62,7 @@ export default class LottieControl extends React.Component {
       );
       document.body.appendChild(this.portalDiv);
     }
-    delay(this.resume, 1000);
+    delay(this.resume, 500); // wait for the enter animation to finish
   }
 
   componentWillUnmount() {
@@ -75,6 +75,7 @@ export default class LottieControl extends React.Component {
   }
 
   resume = () => {
+    clearTimeout(this.promptTimeout);
     const { onComplete } = this.props;
     if (this.state.isPaused || this.state.isStopped) {
       this.setState({
@@ -82,11 +83,9 @@ export default class LottieControl extends React.Component {
         isStopped: false,
         isPromptShowing: false
       });
-      clearTimeout(this.promptTimeout);
     }
     if (this.state.isComplete) {
       this.setState({ isPaused: false, isPromptShowing: false });
-      clearTimeout(this.promptTimeout);
       onComplete && onComplete();
     }
   };
@@ -128,6 +127,7 @@ export default class LottieControl extends React.Component {
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
     const { actions, onNextAction, isDebug } = this.props;
+
     if (isDebug) {
       console.log(`update Frame current Frame: ${frame.currentTime}`);
     }
@@ -179,7 +179,8 @@ export default class LottieControl extends React.Component {
       autoplay: false,
       animationData: updateImagePaths(animationData, imageMap),
       rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice"
+        preserveAspectRatio: "xMidYMid slice",
+        progressiveLoad: true
       }
     };
 
