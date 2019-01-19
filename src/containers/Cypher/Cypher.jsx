@@ -24,6 +24,7 @@ const Cypher = ({ isOpen, onCloseSite }) => (
     leftPane={
       <LottieControl
         animationData={animationData}
+        lazyLoadAnimations={true}
         promptDelay={2000}
         imageMap={[
           { name: "Artboard_1.png", path: Artboard1 },
@@ -42,6 +43,7 @@ const Cypher = ({ isOpen, onCloseSite }) => (
         animation={
           <LottieControl
             animationData={animationRight}
+            lazyLoadAnimations={true}
             actions={actions.filter(
               // audio is driven by the other control
               action => action.action !== ANIMATION_ACTIONS.PLAY_SOUND

@@ -37,14 +37,16 @@ export default class LottieControl extends React.Component {
     /** Callback called when the loop completes */
     onComplete: PropTypes.func,
     isDebug: PropTypes.bool,
-    promptDelay: PropTypes.number
+    promptDelay: PropTypes.number,
+    lazyLoadAnimations: PropTypes.bool
   };
 
   static defaultProps = {
     imageMap: [],
     isLooping: false,
     autoplay: false,
-    isDebug: false
+    isDebug: false,
+    lazyLoadAnimations: false
   };
 
   componentDidMount() {
@@ -171,7 +173,14 @@ export default class LottieControl extends React.Component {
   hasSoundPlayed = soundId => this.soundMap[soundId];
 
   render() {
-    const { animationData, imageMap, isLooping, actions, isDebug } = this.props;
+    const {
+      animationData,
+      imageMap,
+      isLooping,
+      actions,
+      isDebug,
+      lazyLoadAnimations
+    } = this.props;
     const { isPaused, currentFrame, isPromptShowing, isStopped } = this.state;
 
     const defaultOptions = {
@@ -180,7 +189,7 @@ export default class LottieControl extends React.Component {
       animationData: updateImagePaths(animationData, imageMap),
       rendererSettings: {
         preserveAspectRatio: "xMidYMid slice",
-        progressiveLoad: true
+        progressiveLoad: lazyLoadAnimations
       }
     };
 
