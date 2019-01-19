@@ -352,9 +352,9 @@ export default [
     soundFile: tuningRadio
   },
   // Allies capture enigma
-  { frame: 720, action: "pause" },
+  { frame: 710, action: "pause" },
   {
-    frame: 720,
+    frame: 715,
     action: "updateText",
     title: "Break the Code",
     details: "The Allies captured one of Germany’s enigma machines. "
@@ -369,14 +369,16 @@ export default [
     action: "playSound",
     soundFile: ratchetLong
   },
+
   // Allies can't break!
-  { frame: 770, action: "pause" },
+  { frame: 800, action: "pause" },
   {
-    frame: 775,
+    frame: 805,
     action: "updateText",
     details:
       "To break the code they would have to try countless possibilities.  "
   },
+
   {
     frame: 809,
     action: "playSound",
@@ -402,9 +404,9 @@ export default [
     action: "playSound",
     soundFile: buzzer
   },
-  { frame: 970, action: "pause" },
+  { frame: 965, action: "pause" },
   {
-    frame: 975,
+    frame: 970,
     action: "updateText",
     details: "No person could do it because it would take lifetimes.  "
   },
