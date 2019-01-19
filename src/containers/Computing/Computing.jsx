@@ -57,7 +57,6 @@ const Computing = ({ isOpen, onCloseSite }) => (
         ]}
         actions={actions}
         onComplete={onCloseSite}
-        isDebug
       />
     }
     rightPane={
