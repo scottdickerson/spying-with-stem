@@ -32,6 +32,19 @@ yarn start
 ## Project structure
 
 ```javascript
---components: the UI component code to control the animations
---animations: The aftereffects json output are in the animations directory
+/src/components: shared components can be reused across other projects
+/src/containers: Container components are bound to specific animations and data files
+/src/sounds: Sound files should be placed here
 ```
+
+## Production build and server
+
+```yarn build
+yarn global add serve
+yarn serve -s build
+```
+
+## Setting up scheduled tasks on kiosk
+
+Start up the Task Scheduler on Windows
+Import the autostartBrowser.xml and autostartServer.xml
