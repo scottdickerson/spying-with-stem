@@ -12,4 +12,20 @@ import stamp from "../../../../sounds/stamp.mp3";
 import winTone from "../../../../sounds/win_tone.mp3";
 */
 
-export default [];
+export default [
+  {
+    frame: 0,
+    action: "updateText",
+    title: "Computing",
+    details:
+      "By World War II, Nazi Germany invented a machine to produce an “unbreakable” code.  "
+  },
+  {
+    frame: 40,
+    action: "pause"
+  },
+  {
+    frame: 160,
+    action: "pause"
+  }
+];

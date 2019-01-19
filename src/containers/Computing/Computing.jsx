@@ -21,6 +21,8 @@ import rotorBlur20 from "./animation/Computing_Main/images/rotor_blur_v5.00020.p
 import rotorBlur24 from "./animation/Computing_Main/images/rotor_blur_v5.00024.png";
 import rotorBlur25 from "./animation/Computing_Main/images/rotor_blur_v5.00025.png";
 
+import iconLetterheadRight from "./animation/Computing_Right/images/icon_for_nazi_letterhead.jpg";
+import brokenRight from "./animation/Computing_Right/images/broken.png";
 import img0 from "./animation/Computing_Right/images/img_0.png";
 import img1 from "./animation/Computing_Right/images/img_1.png";
 import img2 from "./animation/Computing_Right/images/img_2.png";
@@ -69,7 +71,12 @@ const Computing = ({ isOpen, onCloseSite }) => (
             imageMap={[
               { name: "img_0.png", path: img0 },
               { name: "img_1.png", path: img1 },
-              { name: "img_2.png", path: img2 }
+              { name: "img_2.png", path: img2 },
+              {
+                name: "icon_for_nazi_letterhead.jpg",
+                path: iconLetterheadRight
+              },
+              { name: "broken.png", path: brokenRight }
             ]}
           />
         }

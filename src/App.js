@@ -31,9 +31,9 @@ class App extends React.Component {
     this.resetTimer = setTimeout(this.reset, resetDelay);
   };
   reset = () => {
-    const { history } = this.props;
-    history.push(ROUTES.PULLSCREEN);
-    window.location.reload(); // reload the whole page
+    //const { history } = this.props;
+    //history.push(ROUTES.PULLSCREEN);
+    //window.location.reload(); // reload the whole page
   };
   handleCloseSite = () => {
     const { history } = this.props;
