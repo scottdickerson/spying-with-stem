@@ -13,6 +13,10 @@ class SiteDetails extends Component {
     onCloseSite: PropTypes.func.isRequired
   };
 
+  static defaultProps = {
+    animate: true
+  };
+
   render() {
     const { isOpen, rightPane, leftPane, onCloseSite, animate } = this.props;
 

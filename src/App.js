@@ -5,6 +5,7 @@ import { ROUTES } from "./constants/constants";
 import SpyingPullScreen from "./containers/SpyingPullScreen/SpyingPullScreen";
 import SpyingMainScreen from "./containers/SpyingMainScreen/SpyingMainScreen";
 import Cypher from "./containers/Cypher/Cypher";
+import Computing from "./containers/Computing/Computing";
 import Telegram from "./containers/Telegram/Telegram";
 
 class App extends React.Component {
@@ -30,9 +31,9 @@ class App extends React.Component {
     this.resetTimer = setTimeout(this.reset, resetDelay);
   };
   reset = () => {
-    const { history } = this.props;
-    history.push(ROUTES.PULLSCREEN);
-    window.location.reload(); // reload the whole page
+    //const { history } = this.props;
+    //history.push(ROUTES.PULLSCREEN);
+    //window.location.reload(); // reload the whole page
   };
   handleCloseSite = () => {
     const { location } = this.props;
@@ -55,6 +56,10 @@ class App extends React.Component {
         />
         <Telegram
           isOpen={location.pathname === ROUTES.TELEGRAM}
+          onCloseSite={this.handleCloseSite}
+        />
+        <Computing
+          isOpen={location.pathname === ROUTES.COMPUTING}
           onCloseSite={this.handleCloseSite}
         />
       </div>

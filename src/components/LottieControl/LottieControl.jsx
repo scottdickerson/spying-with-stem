@@ -7,10 +7,16 @@ import { ANIMATION_ACTIONS } from "../../constants/constants";
 import { updateImagePaths } from "./lottieUtils";
 import "animate.css/animate.min.css";
 import styles from "./LottieControl.module.css";
+import delay from "lodash/delay";
 
 const promptID = "animationPausePrompt";
 export default class LottieControl extends React.Component {
-  state = { isPaused: false, currentFrame: 0, isPromptShowing: false };
+  state = {
+    isPaused: true,
+    isStopped: true,
+    currentFrame: 0,
+    isPromptShowing: false
+  };
   soundMap = {};
   actionMap = {};
   previousFrame = 0;
@@ -31,13 +37,16 @@ export default class LottieControl extends React.Component {
     /** Callback called when the loop completes */
     onComplete: PropTypes.func,
     isDebug: PropTypes.bool,
-    promptDelay: PropTypes.number
+    promptDelay: PropTypes.number,
+    lazyLoadAnimations: PropTypes.bool
   };
 
   static defaultProps = {
     imageMap: [],
     isLooping: false,
-    isDebug: false
+    autoplay: false,
+    isDebug: false,
+    lazyLoadAnimations: false
   };
 
   componentDidMount() {
@@ -55,6 +64,7 @@ export default class LottieControl extends React.Component {
       );
       document.body.appendChild(this.portalDiv);
     }
+    delay(this.resume, 500); // wait for the enter animation to finish
   }
 
   componentWillUnmount() {
@@ -67,20 +77,24 @@ export default class LottieControl extends React.Component {
   }
 
   resume = () => {
+    clearTimeout(this.promptTimeout);
     const { onComplete } = this.props;
-    if (this.state.isPaused) {
-      this.setState({ isPaused: false, isPromptShowing: false });
-      clearTimeout(this.promptTimeout);
+    if (this.state.isPaused || this.state.isStopped) {
+      this.setState({
+        isPaused: false,
+        isStopped: false,
+        isPromptShowing: false
+      });
     }
     if (this.state.isComplete && !this.triggeredComplete) {
       this.triggeredComplete = true;
       this.setState({ isPromptShowing: false, isPaused: false });
-      clearTimeout(this.promptTimeout);
       onComplete && onComplete();
     }
   };
 
   findAction = (actions, frame) => {
+    const { isDebug } = this.props;
     // Need to handle frameskip in case the frame number doesn't match exactly
     const matchingAction = actions.find(
       action =>
@@ -90,7 +104,13 @@ export default class LottieControl extends React.Component {
     );
 
     if (matchingAction) {
-      console.log(`matchingAction: ${JSON.stringify(matchingAction)}`);
+      if (isDebug) {
+        console.log(
+          `currentFrame: ${frame} matchingAction: ${JSON.stringify(
+            matchingAction
+          )}`
+        );
+      }
       // keep track that we've run it
       this.actionMap[matchingAction.frame] = true;
       return matchingAction;
@@ -109,10 +129,13 @@ export default class LottieControl extends React.Component {
   };
   /* Unfortunately I seem to get called back multiple times for the same frame for big animations */
   updateFrame = frame => {
-    const { actions, onNextAction } = this.props;
+    const { actions, onNextAction, isDebug } = this.props;
 
+    if (isDebug) {
+      console.log(`update Frame current Frame: ${frame.currentTime}`);
+    }
     const currentFrame = Math.floor(frame.currentTime);
-    if (actions && this.previousFrame <= currentFrame) {
+    if (actions && this.previousFrame < currentFrame) {
       this.previousFrame = currentFrame;
 
       this.setState({ currentFrame: currentFrame });
@@ -151,15 +174,23 @@ export default class LottieControl extends React.Component {
   hasSoundPlayed = soundId => this.soundMap[soundId];
 
   render() {
-    const { animationData, imageMap, isLooping, actions, isDebug } = this.props;
-    const { isPaused, currentFrame, isPromptShowing } = this.state;
+    const {
+      animationData,
+      imageMap,
+      isLooping,
+      actions,
+      isDebug,
+      lazyLoadAnimations
+    } = this.props;
+    const { isPaused, currentFrame, isPromptShowing, isStopped } = this.state;
 
     const defaultOptions = {
       loop: isLooping,
-      autoplay: true,
+      autoplay: false,
       animationData: updateImagePaths(animationData, imageMap),
       rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice"
+        preserveAspectRatio: "xMidYMid slice",
+        progressiveLoad: lazyLoadAnimations
       }
     };
 
@@ -168,6 +199,7 @@ export default class LottieControl extends React.Component {
         <Lottie
           options={defaultOptions}
           isPaused={isPaused}
+          isStopped={isStopped}
           autoLoad
           isClickToPauseDisabled={true}
           isSubframe={false}

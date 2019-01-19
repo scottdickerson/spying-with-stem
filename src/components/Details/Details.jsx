@@ -7,9 +7,9 @@ import { ANIMATION_ACTIONS } from "../../constants/constants";
 
 class Details extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     subTitle: PropTypes.string,
-    details: PropTypes.string.isRequired,
+    details: PropTypes.string,
     animation: PropTypes.node.isRequired
   };
   constructor(props) {

@@ -8,5 +8,6 @@ export const ROUTES = {
   PULLSCREEN: "/",
   MAINSCREEN: "/main",
   CYPHER: "/cypher",
-  TELEGRAM: "/telegram"
+  TELEGRAM: "/telegram",
+  COMPUTING: "/computing"
 };

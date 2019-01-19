@@ -6,7 +6,7 @@ import styles from "./Intro.module.css";
 
 const propTypes = {
   intro: PropTypes.string.isRequired,
-  details: PropTypes.string.isRequired
+  details: PropTypes.string
 };
 
 const Intro = props => {
