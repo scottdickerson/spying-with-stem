@@ -39,8 +39,8 @@ Explore three historic methods for passing &mdash; and breaking &mdash; secret c
         <StorySelector
           onSelect={this.handleSelection}
           stories={[
-            { name: "CYPHER", image: cypher },
-            { name: "CODE BOOK", image: codebook },
+            { name: "CYPHERS", image: cypher },
+            { name: "CODEBOOKS", image: codebook },
             { name: "COMPUTING", image: computing }
           ]}
         />

@@ -13,7 +13,7 @@ export default [
   {
     frame: 0,
     action: "updateText",
-    title: "Code Books",
+    title: "Codebooks",
     details:
       "During World War I, communication technologies improved. So, cryptography changed. "
   },
