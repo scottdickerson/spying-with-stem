@@ -356,8 +356,8 @@ export default [
   {
     frame: 715,
     action: "updateText",
-    title: "Break the Code",
-    details: "The Allies captured one of Germany’s enigma machines. "
+    title: "Break the Code!",
+    details: "The Allies captured one of Germany’s Enigma machines. "
   },
   {
     frame: 728,
@@ -463,7 +463,7 @@ export default [
     action: "updateText",
     title: "Code Broken",
     details:
-      "These early computers helped the Allies defeat the Nazis and ….   "
+      "These early computers helped the Allies defeat the Nazis and laid the foundations for modern computing."
   },
   {
     frame: 1475,

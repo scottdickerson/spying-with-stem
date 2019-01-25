@@ -15,7 +15,7 @@ export default [
     action: "updateText",
     title: "Code Books",
     details:
-      "During World War 1, communication technologies improved. So cryptography changed. "
+      "During World War I, communication technologies improved. So, cryptography changed. "
   },
   {
     frame: 0,
@@ -58,7 +58,7 @@ export default [
     frame: 302,
     action: "updateText",
     details:
-      "Germany sent secret messages using multiple sets of codes - written in tiny codebooks."
+      "Germany sent secret messages using multiple sets of codes &mdash; written in tiny codebooks."
   },
   {
     frame: 314,
@@ -247,9 +247,8 @@ export default [
     frame: 1110,
     action: "updateText",
     title: "Code Broken",
-    subTitle: "Zimmerman Telegram",
     details:
-      "Once broken, this famous secret message from the Germans convinced the United States to enter World War I. "
+      "Once broken, the famous Zimmerman telegram from the Germans convinced the United States to enter World War I. "
   },
 
   {

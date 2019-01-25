@@ -34,7 +34,7 @@ export default [
     action: "updateText",
     title: "Cyphers",
     details:
-      "During the Civil War, Spies like Rose Greenhow used cyphers to send secret messages. "
+      "During the Civil War, spies like Rose Greenhow used cyphers to send secret messages. "
   },
   {
     frame: 140,
@@ -55,7 +55,7 @@ export default [
     frame: 302,
     action: "updateText",
     title: "Break the Code!",
-    details: "To break a cypher - use frequency analysis"
+    details: "Use frequency analysis to break the cipher."
   },
   // Caught the letter
   {
@@ -107,7 +107,7 @@ export default [
     title: "Break the Code!",
     subTitle: "Step 2",
     details:
-      "Compare the frequency of symbols to the frequency of letter in English. "
+      "Compare the frequency of symbols to the frequency of letters in English. "
   },
   {
     frame: 567,
@@ -124,7 +124,7 @@ export default [
     action: "updateText",
     title: "Break the Code!",
     subTitle: "Step 3",
-    details: "Replace each symbol with a matching letter. "
+    details: "Replace each symbol with the matching letter. "
   },
   {
     frame: 635,

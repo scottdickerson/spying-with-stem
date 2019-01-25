@@ -34,7 +34,7 @@ class SpyingMainScreen extends React.Component {
         <Intro
           intro="<p>Cryptography, the science of secret codes, has evolved in times of warfare.
 </p>
-Explore three historic methods for passing - and breaking - secret codes. "
+Explore three historic methods for passing &mdash; and breaking &mdash; secret codes. "
         />
         <StorySelector
           onSelect={this.handleSelection}
