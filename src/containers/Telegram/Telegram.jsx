@@ -67,7 +67,6 @@ const Telegram = ({ isOpen, onCloseSite }) => (
         animation={
           <LottieControl
             animationData={rightAnimation}
-            lazyLoadAnimations={true}
             imageMap={[
               { name: "codebook_sprite_00000.png", path: codebook0 },
               { name: "codebook_sprite_00001.png", path: codebook1 },
