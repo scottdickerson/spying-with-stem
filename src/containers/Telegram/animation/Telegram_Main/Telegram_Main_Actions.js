@@ -248,7 +248,7 @@ export default [
     action: "updateText",
     title: "Code Broken",
     details:
-      "Once broken, the famous Zimmerman telegram from the Germans convinced the United States to enter World War I. "
+      "Once broken, the famous Zimmerman telegram convinced the United States to enter World War I. "
   },
 
   {
