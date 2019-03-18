@@ -30,7 +30,7 @@ class SpyingMainScreen extends React.Component {
   render() {
     return (
       <MainScreen>
-        <TopTitle imageURL={titleImage}>SPYING with S.T.E.M</TopTitle>
+        <TopTitle imageURL={titleImage}>SPYING with S.T.E.M.</TopTitle>
         <Intro
           intro="<p>Cryptography, the science of secret codes, has evolved in times of warfare.
 </p>

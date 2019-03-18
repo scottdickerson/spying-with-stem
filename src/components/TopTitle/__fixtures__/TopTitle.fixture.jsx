@@ -5,6 +5,6 @@ export default {
   component: TopTitle,
   props: {
     imageURL: titleImage,
-    children: "SPYING with S.T.E.M"
+    children: "SPYING with S.T.E.M."
   }
 };
